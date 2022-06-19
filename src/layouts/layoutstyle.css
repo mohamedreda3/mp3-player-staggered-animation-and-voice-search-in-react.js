@@ -57,6 +57,7 @@ header.sticky {
     overflow: hidden;
     justify-content: space-evenly;
     cursor: pointer;
+    margin: auto;
     align-items: center
 }
 
@@ -484,7 +485,7 @@ a.title {
 }
 
 .sora-item:nth-child(2n).show {
-    animation: stragged0 .6s linear;
+    animation: stragged0 .6s linear
 }
 
 .sora-item.show {
@@ -492,32 +493,17 @@ a.title {
 }
 
 .reciter__data.active {
-    animation: stragged3 .6s linear;
+    animation: stragged3 .6s linear
 }
 
 .sora-item.show {
     animation: stragged2 .6s linear;
     animation-delay: calc(.2.5s * var(--i))
 }
-.played__sura.active{
-    animation: stragged4 .6s linear;
+
+.played__sura.active {
+    animation: stragged4 .6s linear
 }
-
-
-/* @keyframes stragged {
-    0% {
-        opacity: 0
-    }
-
-    50% {
-        opacity: .5
-    }
-
-    100% {
-        transform: translateX(0);
-        opacity: 1
-    }
-} */
 
 @keyframes stragged2 {
     0% {
@@ -529,37 +515,37 @@ a.title {
     }
 
     50% {
-        opacity: 0.5;
+        opacity: .5
     }
 
     100% {
         transform: translateX(0);
-        opacity: 1;
+        opacity: 1
     }
 }
 
 @keyframes stragged0 {
     0% {
-        transform: translateX(0%)
+        transform: translateX(0)
     }
-   
+
     25% {
         transform: translateX(190%)
     }
 
     50% {
-        opacity: 0.5;
+        opacity: .5
     }
 
     100% {
         transform: translateX(0);
-        opacity: 1;
+        opacity: 1
     }
 }
 
 @keyframes stragged3 {
     0% {
-        transform: translateY(0%)
+        transform: translateY(0)
     }
 
     25% {
@@ -567,31 +553,31 @@ a.title {
     }
 
     50% {
-        opacity: .5;
+        opacity: .5
     }
 
     100% {
         transform: translateY(0);
-        opacity: 1;
+        opacity: 1
     }
 }
 
 @keyframes stragged4 {
     0% {
-        transform: translateY(0%)
+        transform: translateY(0)
     }
-   
+
     25% {
         transform: translateY(190%)
     }
 
     50% {
-        opacity: .5;
+        opacity: .5
     }
 
     100% {
         transform: translateY(0);
-        opacity: 1;
+        opacity: 1
     }
 }
 
@@ -601,26 +587,16 @@ body {
 
 span.play__progress {
     width: 80%;
-    /* background: grey; */
     border-radius: 5px;
-    cursor:pointer;
-    height: 1.1px;
-}
-input[type='range']{
-    width: 100%;
-    height: 1px;
+    cursor: pointer;
+    height: 1.1px
 }
 
-/* span.progress__bar:before {
-    content: '';
-    height: calc(100% + 15px);
-    height: 15px;
-    width: 15px;
-    position: absolute;
-    right: 0;
-    background: red;
-    border-radius: 50%;
-} */
+input[type=range] {
+    width: 100%;
+    height: 1px;
+    cursor: pointer
+}
 
 span.progress__bar {
     position: absolute;
@@ -628,6 +604,6 @@ span.progress__bar {
     background: red;
     width: 148px;
     height: 100%;
-    transition: 0.5s ease-in-out;
-    border-radius: 30px;
+    transition: .5s ease-in-out;
+    border-radius: 30px
 }

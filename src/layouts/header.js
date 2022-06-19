@@ -17,7 +17,6 @@ function Header() {
     return (
         <header className={sticky ? 'header sticky' : 'header'}>
             <nav>
-                <span className='list'><MenuIcon /></span>
                 <Link to='/' className='title'>
                     <p>تلاوات</p>
                     <div className="logo">

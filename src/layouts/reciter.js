@@ -65,12 +65,11 @@ function Reciter() {
     }
   }, [played]);
 
-  useEffect(() => {
-    console.log(currentSecond)
-    if (audioPlay.current.ended) {
-      setPlayed(false);
-    }
-  }, [currentSecond]);
+  // useEffect(() => {
+  //   if (audioPlay.current.ended) {
+  //     setPlayed(false);
+  //   }
+  // }, [currentSecond]);
 
   useEffect(() => {
     const sec = (audioduration % 60);
@@ -106,33 +105,19 @@ function Reciter() {
 
   useEffect(() => {
     var current;
-    function falsePalyed(){
+    function falsePalyed() {
       clearInterval(current);
       setCurrentSecond(Math.floor(0))
-      setPlayed(false);
+       setPlayed(false);
     }
-    if(source != ''){
-    played ? current = setInterval(() => {
-      var currTime = audioPlay.current.currentTime;
-      currTime < audioduration-1 ? setCurrentSecond(Math.floor(currTime)) : falsePalyed()
-    }, 1000) : falsePalyed()
-  }
-  }, [played]);
+    current = setInterval(() => {
+        var currTime = Math.floor(audioPlay.current.currentTime);
+        var durate = audioduration;
+        
+        (currTime < (audioPlay.current.duration-1)) ? setCurrentSecond(Math.floor(currTime)) : falsePalyed()
+      }, 1000)
+  }, [played, currentSecond]);
 
-  useEffect(() => {
-    var current;
-    function falsePalyed(){
-      clearInterval(current);
-      setCurrentSecond(Math.floor(0))
-      setPlayed(false);
-    }
-    if(source != ''){
-    played ? current = setInterval(() => {
-      var currTime = audioPlay.current.currentTime;
-      currTime < audioduration-1 ? setCurrentSecond(Math.floor(currTime)) : falsePalyed()
-    }, 1000) : falsePalyed()
-  }
-  }, []);
 
   return (
     <div className={stragged ? 'suras__container active' : 'suras__container'}>
@@ -167,7 +152,7 @@ function Reciter() {
                 audioPlay.current.currentTime = e.target.value;
                 setPlayed(true)
               }}
-              value={currentSecond} max={audioduration} />
+              value={currentSecond} max={audioPlay.current.duration} />
             <audio ref={audioPlay} src={source} ></audio>
           </span>
           <span>{time.hour + ' : ' + time.min + ' : ' + time.sec}</span>

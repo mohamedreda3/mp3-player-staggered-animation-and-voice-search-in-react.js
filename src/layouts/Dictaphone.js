@@ -14,7 +14,12 @@ const Dictaphone = (props) => {
   },[transcript]);
 
   useEffect(() => {
-    return () => props.startListen ? SpeechRecognition.startListening({language:'ar'}) : SpeechRecognition.stopListening
+    return () => {
+      SpeechRecognition.startListening({language:'ar'})
+      if(!props.startListen){
+       return SpeechRecognition.stopListening;
+      }
+    };
   },[props.startListen]);
  
   useEffect(()=>props.startListen ? SpeechRecognition.startListening({language:'ar'}) : SpeechRecognition.stopListening,[])
@@ -27,10 +32,6 @@ const Dictaphone = (props) => {
   return (
     <div>
       <p>Microphone: {listening ? 'on' : 'off'}</p>
-      {/* <button type='reset' onClick={SpeechRecognition.startListening}>Start</button>
-      <button type='reset' onClick={SpeechRecognition.stopListening}>Stop</button>
-      <button type='reset' onClick={resetTranscript}>Reset</button> */}
-      {/* <p>{transcript}</p> */}
     </div>
   );
 };

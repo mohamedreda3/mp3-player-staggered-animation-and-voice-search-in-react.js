@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
+import react, { useState, useEffect } from 'react';
+import './layouts/layoutstyle.css';
+import Reciter from './layouts/reciter';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Header from './layouts/header';
+import Main from './layouts/main';
+import Homepage from './layouts/homepage';
 function App() {
+  const [reciters, setReciters] = useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <Main setReciters={setReciters} />
+        <Routes>
+          <Route path={`/`} element={<Homepage reciters={reciters}/>} />
+          <Route path={`/reciter`} element={<Reciter />}>
+            <Route path={`:userId`} element={<Reciter />} />
+          </Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
+
   );
 }
 
